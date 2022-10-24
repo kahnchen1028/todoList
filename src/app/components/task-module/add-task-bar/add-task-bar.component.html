@@ -1,1 +1,22 @@
-<p>add-task-bar works!</p>
+<article class="standard-padding padding-bt-0">
+    <header class="mat-h2">
+            Add new Task
+    </header>
+    <section class="flex-box align-center" >
+      <form class="task-form" [formGroup]="taskForm">
+       <mat-form-field appearance="outline" class="description-width margin-rt-5" >
+            <mat-label>Task description</mat-label>
+            <input matInput placeholder="you want do something." formControlName="description">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="margin-rt-5">
+            <mat-label>Choose a deadline</mat-label>
+            <input matInput [matDatepicker]="picker"  formControlName="deadLineTime">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+    </form>
+    <button mat-raised-button  color="primary" (click)="addNewTask()">Add a task</button>
+    </section>
+</article>
+

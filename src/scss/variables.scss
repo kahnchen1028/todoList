@@ -1,0 +1,12 @@
+$font-family: "Montserrat";
+:root {
+    --black: #000000;
+    --grey_dark_text_field: #181818;
+    --grey: #b6b6b6;
+    --grey_deep: #727272;
+    --white: #ffffff;
+    --main_color: #3f51b5;    
+}
+$background-color: var(--main_color);
+$font-color: var(--white);
+$gray-font-color: var(--grey);

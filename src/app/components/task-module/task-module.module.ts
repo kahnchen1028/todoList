@@ -2,20 +2,21 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AddTaskBarComponent } from './add-task-bar/add-task-bar.component';
 import { TaskListComponent } from './task-list/task-list.component';
-import { TaskComponent } from './task/task.component';
+import { MaterialModule } from 'src/app/share-module/material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-    TaskComponent,
     AddTaskBarComponent,
     TaskListComponent 
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+    MaterialModule
   ],
   exports:[
-    TaskComponent,
     AddTaskBarComponent,
     TaskListComponent 
   ]

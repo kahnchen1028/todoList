@@ -1,0 +1,65 @@
+@use '@angular/material' as mat;
+@import '_reset';
+@import '_mixins';
+@import 'variables';
+
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+
+/* You can add global styles to this file, and also import other style files */
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.flex-box{
+    display:flex;
+    &.align-center{
+       
+        align-items: center;
+    }
+    &.justify-center{
+        justify-content: center;
+    }
+    &.justify-space-around{
+        justify-content: space-around;
+    }   
+}
+
+// padding-field
+.standard-padding{
+    padding: 20px;
+}
+.padding-tp-0{
+    padding-top: 0;
+}
+.padding-bt-0{
+    padding-bottom: 0;
+}
+.padding-lf-0{
+    padding-left: 0;
+}
+.padding-rt-0{
+    padding-right: 0;
+}
+
+// margin field
+.margin-tp-5{
+    margin-top: 5px;
+}
+.margin-bt-5{
+    margin-bottom: 5px;
+}
+.margin-lf-5{
+    margin-left: 5px;
+}
+.margin-rt-5{
+    margin-right: 5px;
+}

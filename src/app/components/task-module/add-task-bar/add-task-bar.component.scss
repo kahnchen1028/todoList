@@ -1,0 +1,14 @@
+article{
+    color:var(--main_color);
+    .task-form {
+
+        .description-width {
+            min-width: 150px;
+            max-width:500px;
+          }
+    }
+    button{
+        margin-left:10px;
+        margin-bottom: 21.5px;
+    }
+}
