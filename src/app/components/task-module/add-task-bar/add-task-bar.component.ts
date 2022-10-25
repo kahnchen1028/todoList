@@ -11,9 +11,10 @@ export class AddTaskBarComponent implements OnInit {
   taskForm: FormGroup;
   constructor(private fb:FormBuilder,private taskService:TaskService) {
     this.taskForm = this.fb.group({
+      id:new FormControl(null),
       description:new FormControl(''),
       deadLineTime:new FormControl(new Date()),
-      createTime:new FormControl(new Date().getTime()),
+      createdTime:new FormControl(null),
       complated:false
     })
    }
@@ -23,7 +24,7 @@ export class AddTaskBarComponent implements OnInit {
   }
 
   addNewTask(){
-    console.log(this.taskForm.value)
-    this.taskService.addTaskList(this.taskForm.value)
+    this.taskService.addTaskList({...this.taskForm.value,createdTime:new Date().getTime()})
+    this.taskForm.patchValue({description:'',complated:false})
   }
 }

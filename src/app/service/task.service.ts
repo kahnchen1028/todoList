@@ -8,7 +8,7 @@ import { TaskModel } from 'src/app/model/task.model';
 export class TaskService {
   private taskList:TaskModel[]=[
     {
-      id:0,
+      id:new Date().getTime(),
       description:"買東西",
       deadLineTime:new Date(),
       createdTime:new Date().getTime(),
@@ -20,13 +20,32 @@ export class TaskService {
   constructor() { }
 
   addTaskList(task:TaskModel){
-    this.taskList.push(task);
+    let newTask = {
+      ...task,
+      id:new Date().getTime(),
+    }
+    this.taskList.push(newTask);
     this.taskSubject$.next(this.taskList);    
   }
 
   updateTask(newTask:TaskModel){
-    this.taskList = [...this.taskList,{...newTask}];
-    console.log(this.taskList)
+    console.log(newTask)
+    this.taskList = this.taskList.map(task=>{
+      if(task.id === newTask.id){
+        return newTask;
+      }
+      return task;
+    })
+    this.taskSubject$.next(this.taskList);    
+  }
+
+  deleteTask(id:number){
+    this.taskList = [...this.taskList.filter(task=>{
+      if(task.id !== id){
+        return true;
+      }
+      return false;
+    })]
     this.taskSubject$.next(this.taskList);    
   }
 

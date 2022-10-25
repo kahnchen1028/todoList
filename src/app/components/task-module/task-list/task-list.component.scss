@@ -2,5 +2,12 @@ table{
     width:100%;
     th,td{
         vertical-align: middle;
+        
+    }
+    td{
+        height:80px;
+        &.description{
+            min-width: 200px;
+        }
     }
 }
