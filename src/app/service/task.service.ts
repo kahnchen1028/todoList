@@ -11,8 +11,10 @@ export class TaskService {
   
   constructor() {
     let tempTaskList = sessionStorage.getItem('tempTaskList')
+   
     if(tempTaskList !== null){
       this.taskList=[...JSON.parse(tempTaskList)]
+      this.taskSubject$.next(this.taskList);    
     }
   }
 
@@ -27,6 +29,7 @@ export class TaskService {
     }
     this.taskList.push(newTask);
     this.taskSubject$.next(this.taskList);    
+    this.settingStorge();
   }
 
   updateTask(newTask:TaskModel){
@@ -37,6 +40,7 @@ export class TaskService {
       return task;
     })
     this.taskSubject$.next(this.taskList);    
+    this.settingStorge()
   }
 
   deleteTask(id:number){
@@ -46,7 +50,9 @@ export class TaskService {
       }
       return false;
     })]
+    
     this.taskSubject$.next(this.taskList);    
+    this.settingStorge()
   }
 
 
