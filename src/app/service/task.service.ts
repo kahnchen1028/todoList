@@ -30,7 +30,6 @@ export class TaskService {
   }
 
   updateTask(newTask:TaskModel){
-    console.log(newTask)
     this.taskList = this.taskList.map(task=>{
       if(task.id === newTask.id){
         return newTask;
@@ -52,7 +51,6 @@ export class TaskService {
 
 
   searchTask(keyword:string){
-    console.log(keyword)
     let searchResult = [...this.taskList.filter(task=>{
       if(task.description.indexOf(keyword) !== -1){
         return true;

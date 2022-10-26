@@ -23,7 +23,6 @@ export class TaskListComponent implements OnInit , OnDestroy ,AfterViewInit {
 
   ngOnInit(): void {
     this.taskService.getTaskList().pipe(takeUntil(this.destory$)).subscribe(data=>{
-      console.log(data)
       this.dataSource.data = data;
     })
   }
@@ -34,13 +33,10 @@ export class TaskListComponent implements OnInit , OnDestroy ,AfterViewInit {
 
   setCurrentComplated(obj:any){
     this.currentTask.complated=obj.checked
-    console.log(this.currentTask)
   }
 
   setCurrentDescription(obj:any){
-
     this.currentTask.description=obj.target.value
-    console.log(this.currentTask,obj)
   }
 
   toggleEditMode(task:TaskModel){
@@ -57,7 +53,6 @@ export class TaskListComponent implements OnInit , OnDestroy ,AfterViewInit {
   }
 
   updateTask(newTask:TaskModel){
-    console.log(this.currentTask)
    this.taskService.updateTask(newTask);
   }
 
