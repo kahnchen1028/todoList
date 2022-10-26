@@ -6,18 +6,19 @@ import { TaskModel } from 'src/app/model/task.model';
   providedIn: 'root'
 })
 export class TaskService {
-  private taskList:TaskModel[]=[
-    {
-      id:new Date().getTime(),
-      description:"買東西",
-      deadLineTime:new Date(),
-      createdTime:new Date().getTime(),
-      complated:true
-    }
-  ]
+  private taskList:TaskModel[]=[]
   taskSubject$ = new BehaviorSubject<TaskModel[]>(this.taskList)
   
-  constructor() { }
+  constructor() {
+    let tempTaskList = sessionStorage.getItem('tempTaskList')
+    if(tempTaskList !== null){
+      this.taskList=[...JSON.parse(tempTaskList)]
+    }
+  }
+
+  getTaskList(){
+    return this.taskSubject$.asObservable()
+  }
 
   addTaskList(task:TaskModel){
     let newTask = {
@@ -49,7 +50,19 @@ export class TaskService {
     this.taskSubject$.next(this.taskList);    
   }
 
-  getTaskList(){
-    return this.taskSubject$.asObservable()
+
+  searchTask(keyword:string){
+    console.log(keyword)
+    let searchResult = [...this.taskList.filter(task=>{
+      if(task.description.indexOf(keyword) !== -1){
+        return true;
+      }
+      return false;
+    })]
+    this.taskSubject$.next(searchResult);  
+  }
+
+  settingStorge(){
+    sessionStorage.setItem('tempTaskList',JSON.stringify(this.taskList))
   }
 }

@@ -1,6 +1,6 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource"  matSort (matSortChange)="taskSortChange($event)" class="mat-elevation-z8">
     <ng-container matColumnDef="complated">
-        <th mat-header-cell *matHeaderCellDef >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by complated">
           Compldated
         </th>
         <td mat-cell *matCellDef="let element"> 
@@ -9,7 +9,7 @@
         <td>
       </ng-container>
       <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by description">
           Description
         </th>
         <td mat-cell *matCellDef="let element" class="description">
@@ -25,19 +25,20 @@
         <td>
       </ng-container>
       <ng-container matColumnDef="deadLineTime">
-        <th mat-header-cell *matHeaderCellDef >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by description">
           DeadLine
         </th>
         <td mat-cell *matCellDef="let element"> {{element.deadLineTime | date:'YYYY/MM/dd' }}<td>
       </ng-container>
       <ng-container matColumnDef="createdTime">
-        <th mat-header-cell *matHeaderCellDef >
+        <th mat-header-cell *matHeaderCellDef  mat-sort-header sortActionDescription="Sort by createdTime">
           Created Time
         </th>
-        <td mat-cell *matCellDef="let element"> {{element.createdTime| date:'YYYY/MM/dd hh:mm:ss'}}<td>
+        <td mat-cell *matCellDef="let element" > {{element.createdTime| date:'YYYY/MM/dd hh:mm:ss'}}<td>
       </ng-container>
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef >
+          <app-task-search></app-task-search>
         </th>
         <td mat-cell *matCellDef="let element">
              <ng-container *ngIf="EditId === element.id else editIcon">
