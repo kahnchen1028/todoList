@@ -14,7 +14,7 @@ export class TaskSearchComponent implements OnInit {
   }
 
   searchTask(keyword:string){
-    if(keyword.length > 3 || keyword.length === 0){
+    if(keyword.length >= 3 || keyword.length === 0){
       this.taskService.searchTask(keyword)
     }
   }
